@@ -1,0 +1,46 @@
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Login
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    nav.navbar.fixed-top.navbar-toggleable-md.navbar-inverse
+      .container
+        button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarMain')
+          span.navbar-toggler-icon
+        a.navbar-brand(href='/') Cinema Finder
+        #navbarMain.navbar-collapse.collapse
+        
+              
+    .container
+      .row
+        .col-md-6.offset-md-3
+          h2 Login
+          form(action='/login', method='POST') 
+            .form-group
+              label(for='email') Email
+              input#email.form-control(type='email', name='email', required=true)
+              
+            .form-group
+              label(for='password') Password
+              input#password.form-control(type='password', name='password', required=true)
+              
+            button.btn.btn-primary(type='submit', style='background-color: #c43f06; border-color: #c43f06;') Login
+
+          // Register link
+          p.not-registered
+            | Not registered? 
+            a(href='/register', style='color: #c43f06; font-weight: bold;') Register here
+
+    footer.footer
+      .container
+        .row
+          .col-12.text-center
+            small &copy; Cinema Finder 
+
+    script(src='https://code.jquery.com/jquery-3.1.1.slim.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js')
+    script(src='/javascripts/bootstrap.min.js')
