@@ -1,0 +1,50 @@
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Register
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    nav.navbar.fixed-top.navbar-toggleable-md.navbar-inverse
+      .container
+        button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarMain')
+          span.navbar-toggler-icon
+        a.navbar-brand(href='/') Cinema Finder
+        #navbarMain.navbar-collapse.collapse
+          
+
+    .container
+      .row
+        .col-md-6.offset-md-3
+          h2 Register
+          form(action='/register', method='POST') 
+          
+            .form-group
+              label(for='email') Email
+              input#email.form-control(type='email', name='email', required=true)
+              
+            .form-group
+              label(for='password') Password
+              input#password.form-control(type='password', name='password', required=true)
+
+            .form-group
+              label(for='confirmPassword') Confirm Password
+              input#confirmPassword.form-control(type='password', name='confirmPassword', required=true)
+
+            button.btn.btn-orange(type='submit') Register
+
+          // Link to go back to login
+          p
+            a(href='/login', class='register-link') Already have an account? Login here.
+
+    footer.footer
+      .container
+        .row
+          .col-12.text-center
+            small &copy; Cinema Finder 
+
+    script(src='https://code.jquery.com/jquery-3.1.1.slim.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js')
+    script(src='/javascripts/bootstrap.min.js')

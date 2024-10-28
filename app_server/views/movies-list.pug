@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  .movie-list
+    h2 Movies :
+    .movie-row
+      each movie in movies
+        .movie-box
+          p= movie.title
