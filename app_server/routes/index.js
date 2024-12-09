@@ -1,30 +1,26 @@
 const express = require('express');
 const router = express.Router();
 const cinemaController = require('../controllers/cinemaController');
-const movieController = require('../controllers/movieController');
 
-
-
-router.get('/', cinemaController.cinemaList);
-/* Locations pages */
-
-const movieRoutes = require('./movie');
+// Import route files
+const movieRoutes = require('./movies');
 const cinemaRoutes = require('./cinema');
 
-/* Logins pages */
+// Home route - Get all cinemas
+router.get('/', cinemaController.getAllCinemas);
+
+// Login page
 router.get('/login', (req, res) => {
     res.render('login'); 
 });
 
-/* Registration pages */
+// Registration page
 router.get('/register', (req, res) => {
     res.render('register');
 });
 
+// Mount movie and cinema routes
 router.use('/movies', movieRoutes);
-
-router.get('/cinemas', cinemaController.cinemaList);
-router.get('/movies', movieController.movieList);
-
+router.use('/cinemas', cinemaRoutes);
 
 module.exports = router;

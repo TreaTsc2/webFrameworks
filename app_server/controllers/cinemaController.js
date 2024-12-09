@@ -1,31 +1,26 @@
+const Cinema = require('../models/cinema');
 
-const cinemaList = function(req, res) {
-    res.render('cinemas-list', {
-      title: 'Cinemas Near You:',
-      pageHeader: {
-        strapline: 'Find cinemas near you!'
-      },
-      cinemas: [
-        {
-          name: "Omniplex Tralee",
-          address: "17 New Street, Tralee, Co.Kerry",
-          distance: "0.9km away"
-        },
-        {
-          name: "Omniplex Killarney",
-          address: "20 Abbey Road, Killarney, Co.Kerry",
-          distance: "20km away"
-        },
-        {
-          name: "Dublin Gallery Cinema",
-          address: "23A, Concord Mall, Co.Dublin",
-          distance: "124km away"
-        }
-      ]
-    });
-  };
-  
-  module.exports = {
-    cinemaList
-  };
-  
+// GET all cinemas
+const getAllCinemas = async (req, res) => {
+    try {
+        const cinemas = await Cinema.find();
+        res.status(200).json(cinemas); // Return the list of cinemas
+    } catch (err) {
+        res.status(500).json({ error: err.message }); // Return error if MongoDB query fails
+    }
+};
+
+// POST a new cinema
+const addCinema = async (req, res) => {
+    try {
+        const { name, location, movies } = req.body;
+        const newCinema = new Cinema({ name, location, movies });
+        await newCinema.save();
+        res.status(201).json(newCinema); // Return the newly created cinema
+    } catch (err) {
+        res.status(400).json({ error: err.message }); // Return error if saving fails
+    }
+};
+
+// Export the functions
+module.exports = { getAllCinemas, addCinema };
